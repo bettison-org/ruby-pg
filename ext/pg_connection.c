@@ -3685,10 +3685,11 @@ pgconn_set_client_encoding_async1( VALUE args )
 
 
 static VALUE
-pgconn_set_client_encoding_async2( VALUE arg )
+pgconn_set_client_encoding_async2( VALUE arg, VALUE exception )
 {
 	UNUSED(arg);
-	return 1;
+  UNUSED(exception); // If you don't need the exception object
+  return INT2FIX(1); // Or rb_int_new(1) if you prefer
 }
 
 
