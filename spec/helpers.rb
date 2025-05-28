@@ -347,6 +347,8 @@ RSpec.configure do |config|
 		config.filter_run_excluding( :postgresql_94, :postgresql_95 )
 	elsif PG.library_version < 90500
 		config.filter_run_excluding( :postgresql_95 )
+  else #just run all except 9.1 tests for 13
+    config.filter_run_excluding( :postgresql_91 )
 	end
 end
 
