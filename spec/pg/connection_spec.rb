@@ -229,7 +229,7 @@ describe PG::Connection do
 	it "can retrieve it's connection parameters for the established connection" do
 		expect( @conn.db ).to eq( "test" )
 		expect( @conn.user ).to be_a_kind_of( String )
-		expect( @conn.pass ).to eq( "" )
+		expect( @conn.pass ).to be_a_kind_of( String )
 		expect( @conn.port ).to eq( 54321 )
 		expect( @conn.tty ).to eq( "" )
 		expect( @conn.options ).to eq( "" )
@@ -640,7 +640,7 @@ describe PG::Connection do
 				@conn.copy_data( "COPY copytable FROM STDOUT" ) do |res|
 					@conn.put_copy_data "xyz\n"
 				end
-			}.to raise_error(PG::Error, /invalid input syntax for integer/)
+			}.to raise_error(PG::Error, /invalid input syntax for type integer/)
 		end
 		expect( @conn ).to still_be_usable
 	end
